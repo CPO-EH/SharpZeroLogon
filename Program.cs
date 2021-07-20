@@ -48,12 +48,6 @@ namespace SharpZeroLogon
                             using (dc)
                             {
                                 Console.WriteLine($"Name : {dc.Name} | IP : {dc.IPAddress} | Forest : {dc.Forest} | OS : {dc.OSVersion}");
-                                /*
-                                Console.WriteLine(dc.SiteName);
-                                Console.WriteLine(dc.IPAddress);
-                                Console.WriteLine(dc.Forest);
-                                Console.WriteLine(dc.CurrentTime);
-                                */
                             }
                         }
                     }
