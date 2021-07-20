@@ -4,7 +4,7 @@ Zerologon (CVE-2020-1472) Exploiter I used used while Red Teaming, within Cobalt
 
 Heavily based on -> https://github.com/CPO-EH/CVE-2020-1472_ZeroLogonChecker
 
-<b>This version can</b>:
+<b>This version can</b> :
 
 - List local DCs
 
