@@ -13,6 +13,6 @@ Heavily based on -> https://github.com/CPO-EH/CVE-2020-1472_ZeroLogonChecker
 - Exploit vulnerable DC
 
 
-Command line:
+<b>Command line</b> :
 
 - SharpZeroLogon.exe [target dc fqdn] <optional: -reset> <optional: -listdc>
