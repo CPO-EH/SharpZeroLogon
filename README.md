@@ -1,6 +1,6 @@
 # SharpZeroLogon
 
-Zerologon Exploiter I used on Cobalt Strike Used while Red Teaming, within Cobalt Strike -> Execute-Assembly
+Zerologon Exploiter I used used while Red Teaming, within Cobalt Strike -> Execute-Assembly
 
 This version can:
 
