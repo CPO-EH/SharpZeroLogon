@@ -7,7 +7,7 @@ Heavily based on -> https://github.com/CPO-EH/CVE-2020-1472_ZeroLogonChecker
 This version can:
 
 - List local DCs
-- 
+
 - Check for DC Vulnerability
 
 - Exploit vulnerable DC
