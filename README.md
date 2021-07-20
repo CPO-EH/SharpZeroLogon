@@ -14,4 +14,4 @@ This version can:
 
 Command line:
 
-- SharpZeroLogon.exe <target dc fqdn> <optional: -reset> <optional: -listdc>
+- SharpZeroLogon.exe [target dc fqdn] <optional: -reset> <optional: -listdc>
